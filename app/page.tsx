@@ -1,5 +1,7 @@
-import HeartModel from "@/components/HeartModel";
+import React from "react";
 
-export default function Home() {
-  return <HeartModel />;
-}
+const page = () => {
+  return <div>page</div>;
+};
+
+export default page;
