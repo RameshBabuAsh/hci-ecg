@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__, static_folder='static')
 
 # Initialize EasyOCR reader once (English only, CPU mode)
-reader = easyocr.Reader(['en'], gpu=True)
+reader = easyocr.Reader(['en'], gpu=False)
 
 @app.route('/', methods=['GET'])
 def index():
@@ -40,7 +40,7 @@ def analyze_graph():
     ocr_results = reader.readtext(graph_np, detail=0)
     extracted_text = " ".join(ocr_results)
 
-    print("Extracted Text:", extracted_text.lower())
+    # print("Extracted Text:", extracted_text.lower())
 
     # Choose redirect URL based on presence of "normal"
     if "normal" in extracted_text.lower():

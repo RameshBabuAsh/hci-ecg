@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-// import Link from "next/link";
 import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Placeholder images
 const slides = [
@@ -34,132 +35,115 @@ export default function MyocardialInfarctionPage() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [is3DMode, setIs3DMode] = useState(false);
 
-  // Handle next slide
   const handleNext = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
 
-  // Handle previous slide
   const handlePrev = () => {
     setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      {/* Header */}
-      <center>
-        <div className="w-full max-w-3xl flex justify-between items-center mb-4">
-            <h1 className="text-xl font-bold mb-4">Myocardial Infarction</h1>
-            {/* “X” mark to return to homepage */}
-            {/* <Link href="/" aria-label="Close and go back to homepage"> */}
-            {/* <button className="text-red-500 font-bold text-2xl">X</button> */}
-            {/* </Link> */}
+    <div className="min-h-screen bg-gradient-to-tr from-white via-blue-50 to-blue-100 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-gray-800">
+            🫀 Myocardial Infarction
+          </h1>
+          {/* <Link href="/"> <button>X</button> </Link> */}
         </div>
-      </center>
 
-      {/* Content Section */}
-      <div className="w-full max-w-3xl bg-white shadow p-4 rounded-md relative">
-        <div className="flex justify-between items-start gap-4">
-          {/* Main Section (Carousel or Video) */}
-          <div className="flex-1">
-            {is3DMode ? (
-              // 3D Mode: show video
-              <div className="flex flex-col items-center">
-                <video
-                  src={videoData.src}
-                  controls
-                  className="w-full h-auto rounded-md mb-2"
-                />
-                <p className="text-gray-700">{videoData.description}</p>
-              </div>
-            ) : (
-              // Carousel Mode
-              <div className="flex flex-col items-center">
-                {!is3DMode && (
-                <div className="mb-4 p-4">
-                    <p className="text-gray-900">{slides[activeSlide].text}</p>
-                </div>
-                )}
-                <div className="w-full h-64 relative mb-2">
+        {/* Main Content */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Main display */}
+          <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-lg flex flex-col items-center">
+            {!is3DMode ? (
+              <>
+                <p className="text-gray-700 text-lg mb-4 text-center font-semibold">
+                  {slides[activeSlide].text}
+                </p>
+                <div className="relative w-full h-72 md:h-96 mb-4">
                   <Image
                     src={slides[activeSlide].src}
                     alt={`Slide ${activeSlide + 1}`}
                     fill
-                    style={{ objectFit: "contain" }}
-                    className="transition-all duration-500"
+                    className="object-contain rounded-xl"
                   />
                 </div>
-                {/* Carousel Controls */}
-                <div className="flex space-x-4 mt-8">
-                  <button
-                    onClick={handlePrev}
-                    className="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300"
-                  >
-                    Prev
-                  </button>
-                  <button
-                    onClick={handleNext}
-                    className="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300"
-                  >
-                    Next
-                  </button>
-                </div>
-              </div>
+                {/* Conditionally render carousel controls */}
+                {slides.length > 1 && (
+                  <div className="flex gap-4">
+                    <Button onClick={handlePrev} className="cursor-pointer">
+                      <ArrowLeft size={18} /> Prev
+                    </Button>
+                    <Button onClick={handleNext} className="cursor-pointer">
+                      Next <ArrowRight size={18} />
+                    </Button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                <video
+                  src={videoData.src}
+                  controls
+                  className="w-full rounded-xl shadow mb-4"
+                />
+                <p className="text-gray-700 text-center">
+                  {videoData.description}
+                </p>
+              </>
             )}
           </div>
 
-          {/* Sidebar (Settings, etc.) */}
-          <div className="w-48 border-l pl-4">
-            <div className="mb-4">
-              <h2 className="font-semibold">Settings</h2>
-              {/* Language dropdown - only English for now */}
-              <div className="mt-2">
-                <label htmlFor="lang" className="block text-sm font-medium">
-                  Language
-                </label>
-                <select
-                  id="lang"
-                  className="border rounded p-1 w-full bg-white"
-                  value="en"
-                  onChange={() => {
-                    /* do nothing for now */
-                  }}
-                >
-                  <option value="en">English</option>
-                </select>
-              </div>
+          {/* Sidebar */}
+          <div className="bg-white p-6 rounded-2xl shadow-lg space-y-6">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-800">Language</h2>
+              <select
+                id="lang"
+                className="mt-2 w-full p-2 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                defaultValue="en"
+              >
+                <option value="en">English</option>
+              </select>
             </div>
 
-            {/* Presentation toggle */}
-            <div className="mb-4">
-              <h2 className="font-semibold">Presentation</h2>
-              <div className="mt-2 flex flex-col">
-                <label className="inline-flex items-center mb-2 cursor-pointer">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-800">
+                Presentation
+              </h2>
+              <div className="mt-2 space-y-2">
+                <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="presentation"
-                    className="form-radio"
                     checked={!is3DMode}
                     onChange={() => setIs3DMode(false)}
+                    className="form-radio text-blue-600"
                   />
-                  <span className="ml-2">Images</span>
+                  <span>Images</span>
                 </label>
-                <label className="inline-flex items-center cursor-pointer">
+                <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="presentation"
-                    className="form-radio"
                     checked={is3DMode}
                     onChange={() => setIs3DMode(true)}
+                    className="form-radio text-blue-600"
                   />
-                  <span className="ml-2">3D Animation</span>
+                  <span>3D Animation</span>
                 </label>
               </div>
             </div>
           </div>
         </div>
 
-        
+        {/* Footer */}
+        <div className="text-center text-sm text-gray-500 mt-10">
+          Built with ❤️ for cardiac condition awareness
+        </div>
       </div>
     </div>
   );
