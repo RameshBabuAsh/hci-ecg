@@ -2,18 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>ECG Analyzer</title>
   <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #e0f2f1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
     .btn-green {
-      background-color: #04AA6D; /* Green theme */ 
-      border: none; color: white;
-      padding: 15px 32px; font-size: 16px;
-      cursor: pointer; border-radius: 4px;
+      background-color: #04AA6D;
+      color: white;
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-green:hover {
+      background-color: #03975e;
     }
   </style>
 </head>
 <body>
-  <form action="{{ url_for('screenshot') }}" method="post">
-    <button type="submit" class="btn-green">Analyze</button>
-  </form>
+  <div class="container">
+    <h1 style="margin-bottom: 1.5rem; font-size: 24px; color: #333;">Start ECG Analysis</h1>
+    <form action="{{ url_for('screenshot') }}" method="post">
+      <button type="submit" class="btn-green">Analyze</button>
+    </form>
+  </div>
 </body>
 </html>

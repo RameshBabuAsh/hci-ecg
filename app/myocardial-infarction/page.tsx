@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 // Placeholder images
 const slides = [
   {
-    src: "/compare_myo.png",
+    src: "/healthy_heart.png",
     text: "A normal heart",
   },
   {
@@ -20,7 +20,7 @@ const slides = [
     text: "Blood pipe (artery) blockage",
   },
   {
-    src: "/compare_myo.png",
+    src: "/heart_attack.png",
     text: "Due to blockage, blood flow decreases leading to heart attack",
   },
 ];
@@ -136,6 +136,16 @@ export default function MyocardialInfarctionPage() {
                   <span>3D Animation</span>
                 </label>
               </div>
+            </div>
+
+            {/* Download PDF Button */}
+            <div>
+              <h2 className="text-lg font-semibold text-gray-800">Download</h2>
+              <Button asChild className="mt-2 w-full justify-center">
+                <a href="/myocardial_infarction.pdf" download>
+                  Download Document
+                </a>
+              </Button>
             </div>
           </div>
         </div>

@@ -15,10 +15,10 @@ export default function NormalHeartPage() {
             src="/normal_heart.png"
             alt="Illustration of a healthy heart"
             fill
-            className="object-contain"
+            className="object-cover"
           />
         </div>
-        <p className="text-lg text-gray-700 text-center">
+        <p className="text-lg text-gray-700 text-center font-semibold">
           Congratulations! You have a strong, healthy heart pumping with energy and vitality!
         </p>
       </div>

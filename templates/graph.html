@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /></head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Cropped Graph</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .graph-img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      margin-bottom: 2rem;
+    }
+    .btn-green {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-green:hover {
+      background-color: #038f5c;
+    }
+  </style>
+</head>
 <body>
-  <!-- Display the cropped graph -->
-  <img src="{{ url_for('static', filename='graph.png') }}"
-       alt="Cropped Graph" />
-
-  <!-- Dynamic redirect based on OCR result -->
+  <img class="graph-img" src="{{ url_for('static', filename='graph.png') }}" alt="Cropped Graph" />
   <form action="{{ redirect_url }}" method="get">
     <button type="submit" class="btn-green">Display Output</button>
   </form>
