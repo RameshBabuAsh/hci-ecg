@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 // Slide images and text
 const slides = [
@@ -122,6 +123,16 @@ export default function HypertrophyPage() {
                   <span>3D Animation</span>
                 </label>
               </div>
+            </div>
+
+            {/* Download PDF Button */}
+            <div>
+              <h2 className="text-lg font-semibold text-gray-800">Download</h2>
+              <Button asChild className="mt-2 w-full justify-center">
+                <a href="/heart_hypertrophy.pdf" download>
+                  Download Document
+                </a>
+              </Button>
             </div>
           </div>
         </div>

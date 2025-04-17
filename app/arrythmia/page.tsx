@@ -13,7 +13,7 @@ const slides = [
   },
   {
     src: "/arrythmia.png",
-    text: "Normal Vs. Arrythmia Heart",
+    text: "Normal Vs. Arrhythmia Heart",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function ElectrolyteImbalancePage() {
         {/* Header */}
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">
-            Electrolyte Imbalance
+            Arrhythmia 
           </h1>
           {/* <Link href="/" aria-label="Close and go back to homepage">
           <button className="text-red-500 font-bold text-2xl">X</button>
@@ -130,6 +130,16 @@ export default function ElectrolyteImbalancePage() {
                   <span>3D Animation</span>
                 </label>
               </div>
+            </div>
+
+            {/* Download PDF Button */}
+            <div>
+              <h2 className="text-lg font-semibold text-gray-800">Download</h2>
+              <Button asChild className="mt-2 w-full justify-center">
+                <a href="/arrhythmia.pdf" download>
+                  Download Document
+                </a>
+              </Button>
             </div>
           </div>
         </div>
