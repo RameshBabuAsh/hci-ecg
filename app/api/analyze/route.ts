@@ -10,7 +10,7 @@ export async function POST() {
     await execAsync(`adb shell screencap -p /sdcard/screen.png`);
     await execAsync(`adb pull /sdcard/screen.png ./public/screenshot.png`);
 
-    const { stdout } = await execAsync(`python3 ocr_analyzer.py`);
+    const { stdout } = await execAsync(`python ocr_analyzer.py`);
     const result = stdout.trim();
 
     return NextResponse.json({ result });
