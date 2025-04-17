@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /></head>
+<body>
+  <!-- Display the cropped graph -->
+  <img src="{{ url_for('static', filename='graph.png') }}"
+       alt="Cropped Graph" />
+
+  <!-- Dynamic redirect based on OCR result -->
+  <form action="{{ redirect_url }}" method="get">
+    <button type="submit" class="btn-green">Display Output</button>
+  </form>
+</body>
+</html>

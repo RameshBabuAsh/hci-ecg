@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /></head>
+<body>
+  <!-- Display the captured screenshot -->
+  <img src="{{ url_for('static', filename='screenshot.png') }}"
+       alt="Device Screenshot" />
+  <form action="{{ url_for('analyze_graph') }}" method="post">
+    <button type="submit" class="btn-green">Analyze Graph</button>
+  </form>
+</body>
+</html>
